@@ -6,7 +6,7 @@ script: "./build.sh"
 before_deploy:
 - git config --local user.name "ice0"
 - git config --local user.email "konoplin@gmail.com"
-- git tag "latest"
+#- git tag "latest"
 deploy:
   provider: releases
   api_key:
