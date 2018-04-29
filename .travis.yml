@@ -2,4 +2,4 @@ language: cpp
 sudo: enabled
 dist: precise
 install: ./install-dependencies.sh
-script: cd .//zlib-1.2.11 && ./configure && make && make install
+script: cd ./zlib-1.2.11 && ./configure && make && make install
