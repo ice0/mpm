@@ -1,6 +1,11 @@
 language: cpp
-sudo: enabled
-dist: precise
+matrix:
+  include:
+    - os: linux
+      sudo: enabled
+      dist: precise
+    - os: osx
+
 install: "./install-dependencies.sh"
 script: "./build.sh"
 git:
