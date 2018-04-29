@@ -14,9 +14,9 @@ git:
 before_deploy:
 - git config --local user.email "builds@travis-ci.com"
 - git config --local user.name "Travis CI"
-- export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
-- git tag "latest" -fa -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-- git push -q -f https://$GH_TOKEN@github.com/ice0/mpm --tags
+#- export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+#- git tag "latest" -fa -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+#- git push -q -f https://$GH_TOKEN@github.com/ice0/mpm --tags
 deploy:
   provider: releases
   skip_cleanup: true
