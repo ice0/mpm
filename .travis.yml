@@ -17,7 +17,7 @@ before_deploy:
 - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
 #- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
 #- git fetch --tags
-- git tag "latest" -fa -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+- git tag "latest-$TRAVIS_OS_NAME" -fa -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
 - git push -q -f https://$GH_TOKEN@github.com/ice0/mpm --tags
 #- git config --local user.name "ice0"
 #- git config --local user.email "konoplin@gmail.com"
@@ -28,7 +28,7 @@ deploy:
   overwrite: true
   prerelease: true
   latest: true
-  name: "latest"
+  name: "latest-$TRAVIS_OS_NAME"
   api_key: $GH_TOKEN
   file: build.tgz
   on:
