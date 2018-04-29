@@ -1,4 +1,6 @@
 #!/bin/bash
 
+mkdir ./build
 cd ./zlib-1.2.11
-./configure && make && make install
+./configure --prefix=../build
+make && make install
