@@ -1,2 +1,0 @@
-# mpm
-Morevna package manager
