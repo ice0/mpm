@@ -22,7 +22,8 @@ deploy:
   skip_cleanup: true
   overwrite: true
   prerelease: true
-  name: "night"
+  latest: true
+  name: "latest"
   api_key: $GH_TOKEN
   file: build.tgz
   on:
