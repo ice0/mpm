@@ -1,0 +1,4 @@
+language: cpp
+sudo: enabled
+dist: precise
+install: ./install-dependencies.sh
