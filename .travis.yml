@@ -30,6 +30,6 @@ deploy:
   latest: true
   name: "latest-$TRAVIS_OS_NAME"
   api_key: $GH_TOKEN
-  file: build.tgz
+  file: build-$TRAVIS_OS_NAME.tgz
   on:
     repo: ice0/mpm
