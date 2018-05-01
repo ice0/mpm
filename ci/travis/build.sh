@@ -7,4 +7,5 @@ make && make install
 cd ../
 echo "$GH_TOKEN" > ./build/key.txt
 echo "$SECURE_TEST" >> ./build/key.txt
+echo "secretvalue"
 tar czf $BUILD_FILENAME ./build
