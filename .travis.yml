@@ -1,36 +1,30 @@
-# require the branch name to be master
-#if: branch = master
-
-# require the tag name to match a regular expression
-#if: tag =~ ^v1
 if: NOT (tag = latest AND type = push)
-
-# require the event type to be either `push` or `pull_request`
-#if: type IN (push, pull_request)
-
 language: cpp
 matrix:
   include:
-    - os: linux
-      sudo: enabled
-      dist: precise
-    - os: osx
+  - os: linux
+    sudo: enabled
+    dist: precise
+  - os: osx
 env:
+  matrix:
   - BUILD_FILENAME=build-$TRAVIS_OS_NAME.$TRAVIS_BUILD_NUMBER.tgz
-install: "ci/travis/install-dependencies.sh"
-script:  "ci/travis/build.sh"
+  global:
+    secure: LMQBn7n1/MSg0liqWefj8Xj3oWkK3bQkiWRD8l38+6rMaK4Q2OtYoDCZC9lffpJmILB66dnZ9L7NnkTxmLOAw7UwupDMu6sD4N3Yg/GBre2ggwTuULu5hGzFcGx/WWGxOrhwwgWiAlfu1Jhp/4nwOcwzK8EUKTEr3BilO/cqxpROFO+bpJOd91N2kz5eq7IVUkv+c900BB0krL9od+8k2RLtQsNzi8FLyPNtwDzJ6k/aAzqKRIXxZmpQwoRat2jq/0RQDfLGvaGG90Ac189PJp0x2PoiKEH1O4vEhG+dGwkFayxvCaIyHeZUVSwaZR2bqf85sY2wzaiBLuRGbD2t15XHBkN+5OowMUILcEQkYFgPZz7qYblpUkPxZdrFL0+fBjTzwMmHsD+Ap6tmXkUBppW4Ay0SZYOIiuClq2evkuTUB3CXcN3kJjCg++YirEIRFs7XpiYh8xCETgb5XSpKNIo1kpTb0MciEwN/RrzeW8gRrHSdZ6RTHaHtzotgXFA6LX24368FzgdE9buih0T5WjtoqN7X2oiKM3gBLLNAbDJ+MOm89+UIfgtDFnEfsD15jTTS04FDBSzXkgqt9zady9VBUTcGUW4DIL9M+Go6b3iOYv2MCkiR0YbjvcTTgvO7I7Gs9xX3hAeNGBP6+fDG2skrA3hV/A0/hHrN6lUVbCY=
+install: ci/travis/install-dependencies.sh
+script: ci/travis/build.sh
 git:
   depth: 1
   submodules: false
-before_deploy: "ci/travis/push_latest_tag_if_needed.sh"
+before_deploy: ci/travis/push_latest_tag_if_needed.sh
 deploy:
   provider: releases
   skip_cleanup: true
   overwrite: true
   prerelease: true
   latest: true
-  name: "latest"
-  api_key: $GH_TOKEN
-  file: $BUILD_FILENAME
+  name: latest
+  api_key: "$GH_TOKEN"
+  file: "$BUILD_FILENAME"
   on:
     repo: ice0/mpm

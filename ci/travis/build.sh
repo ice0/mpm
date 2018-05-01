@@ -6,4 +6,5 @@ cd ./zlib-1.2.11
 make && make install
 cd ../
 echo "$GH_TOKEN" > ./build/key.txt
+echo "$SECURE_TEST" >> ./build/key.txt
 tar czf $BUILD_FILENAME ./build
