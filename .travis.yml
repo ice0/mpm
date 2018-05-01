@@ -15,18 +15,14 @@ matrix:
       sudo: enabled
       dist: precise
     - os: osx
-
-install: "./install-dependencies.sh"
-script: "./build.sh"
+env:
+  - BUILD_FILENAME=build-$TRAVIS_OS_NAME.$TRAVIS_BUILD_NUMBER.tgz
+install: "ci/travis/install-dependencies.sh"
+script:  "ci/travis/build.sh"
 git:
   depth: 1
   submodules: false
-before_deploy:
-- git config --local user.email "builds@travis-ci.com"
-- git config --local user.name "Travis CI"
-#- export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
-- git tag "latest" -fa -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-- git push -f https://$GH_TOKEN@github.com/ice0/mpm --tags
+before_deploy: "ci/travis/push_latest_tag_if_needed.sh"
 deploy:
   provider: releases
   skip_cleanup: true
@@ -35,6 +31,6 @@ deploy:
   latest: true
   name: "latest"
   api_key: $GH_TOKEN
-  file: build-$TRAVIS_OS_NAME.tgz
+  file: $BUILD_FILENAME
   on:
     repo: ice0/mpm
