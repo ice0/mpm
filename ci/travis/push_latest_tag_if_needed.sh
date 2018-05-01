@@ -1,6 +1,6 @@
 #!/bin/bash
 git fetch --tags # update tags
-env
+echo "$GH_TOKEN"
 
 if ! git tag -l --points-at HEAD | grep -q latest; then # check if we are NOT on latest tag already
   #- export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
