@@ -9,8 +9,6 @@ matrix:
 env:
   matrix:
   - BUILD_FILENAME=build-$TRAVIS_OS_NAME.$TRAVIS_BUILD_NUMBER.tgz
-  global:
-    secure: LMQBn7n1/MSg0liqWefj8Xj3oWkK3bQkiWRD8l38+6rMaK4Q2OtYoDCZC9lffpJmILB66dnZ9L7NnkTxmLOAw7UwupDMu6sD4N3Yg/GBre2ggwTuULu5hGzFcGx/WWGxOrhwwgWiAlfu1Jhp/4nwOcwzK8EUKTEr3BilO/cqxpROFO+bpJOd91N2kz5eq7IVUkv+c900BB0krL9od+8k2RLtQsNzi8FLyPNtwDzJ6k/aAzqKRIXxZmpQwoRat2jq/0RQDfLGvaGG90Ac189PJp0x2PoiKEH1O4vEhG+dGwkFayxvCaIyHeZUVSwaZR2bqf85sY2wzaiBLuRGbD2t15XHBkN+5OowMUILcEQkYFgPZz7qYblpUkPxZdrFL0+fBjTzwMmHsD+Ap6tmXkUBppW4Ay0SZYOIiuClq2evkuTUB3CXcN3kJjCg++YirEIRFs7XpiYh8xCETgb5XSpKNIo1kpTb0MciEwN/RrzeW8gRrHSdZ6RTHaHtzotgXFA6LX24368FzgdE9buih0T5WjtoqN7X2oiKM3gBLLNAbDJ+MOm89+UIfgtDFnEfsD15jTTS04FDBSzXkgqt9zady9VBUTcGUW4DIL9M+Go6b3iOYv2MCkiR0YbjvcTTgvO7I7Gs9xX3hAeNGBP6+fDG2skrA3hV/A0/hHrN6lUVbCY=
 install: ci/travis/install-dependencies.sh
 script: ci/travis/build.sh
 git:
