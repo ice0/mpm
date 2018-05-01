@@ -8,7 +8,7 @@ matrix:
   - os: osx
 env:
   matrix:
-  - BUILD_FILENAME=build-$TRAVIS_OS_NAME.$TRAVIS_BUILD_NUMBER-`date '+%Y-%m-%d %H:%M:%S'`.tgz
+  - BUILD_FILENAME=build-$TRAVIS_OS_NAME.$TRAVIS_BUILD_NUMBER-$(date '+%Y-%m-%d_%H:%M:%S').tgz
 install: ci/travis/install-dependencies.sh
 script: ci/travis/build.sh
 git:
