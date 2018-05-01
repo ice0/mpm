@@ -3,7 +3,7 @@
 
 # require the tag name to match a regular expression
 #if: tag =~ ^v1
-if: (tag = latest && type = push)
+if: not (tag = latest && type = push)
 
 # require the event type to be either `push` or `pull_request`
 #if: type IN (push, pull_request)
@@ -25,7 +25,7 @@ before_deploy:
 - git config --local user.email "builds@travis-ci.com"
 - git config --local user.name "Travis CI"
 #- export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
-- git tag "latest" -fa -m "[skip ci] Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+- git tag "latest" -fa -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
 - git push -q -f https://$GH_TOKEN@github.com/ice0/mpm --tags
 deploy:
   provider: releases
