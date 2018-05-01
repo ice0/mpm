@@ -1,7 +1,7 @@
 #!/bin/bash
 git fetch --tags # update tags
 
-if ! git tag -l --points-at HEAD | grep -q latest; then # we are NOT on latest tag already
+if ! git tag -l --points-at HEAD | grep -q latest; then # check if we are NOT on latest tag already
   #- export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
   git config --local user.email "builds@travis-ci.com"
   git config --local user.name "Travis CI"
